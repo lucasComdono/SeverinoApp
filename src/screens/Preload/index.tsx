@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import { styles } from './styles';
 
 import Severino from '../../assets/logo.png';
@@ -7,6 +8,13 @@ import Severino from '../../assets/logo.png';
 import { ButtonBasic } from '../../components/ButtonBasic';
 
 export function Preload(){
+
+    const navigation = useNavigation();
+    
+    function handlePreload(){
+        navigation.navigate('SignUpUserType');
+    }
+
     return (
         <View style={styles.container}>
             <View>
@@ -20,6 +28,7 @@ export function Preload(){
                 <ButtonBasic
                     title="Vamos começar?" 
                     activeOpacity={0.8}
+                    onPress={handlePreload}
                 />
             </View>
         </View> 

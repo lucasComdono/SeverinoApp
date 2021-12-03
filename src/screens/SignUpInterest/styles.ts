@@ -4,13 +4,12 @@ import { theme } from '../../global/styles/theme';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "flex-start",
-        alignItems: 'flex-start',
         padding: 30,
         backgroundColor: '#F5F5F5',
+        
     },
     content: {
-      paddingBottom: 30
+      marginBottom: 30
     },
     title: {
         color: theme.colors.heading,
@@ -22,6 +21,7 @@ export const styles = StyleSheet.create({
         color: theme.colors.highlight,
         fontSize: 16,
         fontFamily: theme.fonts.text500,
+        marginBottom: 30
     },
     splitText: {
         alignSelf: 'center',
@@ -29,5 +29,14 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: theme.fonts.text400,
         marginVertical: 30
-    }
+    },
+    flatList: {
+        backgroundColor: '#F5F5F5',
+        paddingHorizontal: 22,
+    },
 })
+
+
+
+
+        

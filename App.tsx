@@ -1,10 +1,15 @@
 import React from 'react';
-
-import {  Poppins_700Bold, Poppins_600SemiBold, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
+import { Routes } from './src/routes';
 
-import { Preload } from './src/screens/Preload';
+//Fontes
+import {  Poppins_700Bold,
+  Poppins_600SemiBold,
+  Poppins_400Regular,
+  Poppins_500Medium 
+} from '@expo-google-fonts/poppins';
+
 
 export default function App() {
 
@@ -21,7 +26,7 @@ export default function App() {
 
   return (
     <>   
-      <Preload/>
+      <Routes />
     </>
   );
 }

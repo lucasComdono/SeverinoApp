@@ -8,56 +8,57 @@ import { ButtonBasic } from '../../components/ButtonBasic';
 import { SignInput } from '../../components/SignInput';
 
 
-export function SignIn() {
-    
-    const[emailField, setEmailField] = useState('');
+export function SignUpPassword() {
+
     const[passwordField, setPasswordField] = useState('');
-    
+
+
     const navigation = useNavigation();
 
-    function handleSignIn(){
-        navigation.navigate('Home');
+    function handleSignUpPassword(){
+        navigation.navigate('SignUpUserType');
     }
     function handleMessageButton(){
-        navigation.navigate('SignUp');
+        navigation.navigate('SignIn');
     }
 
     return (
         <View style={styles.container}>
             <View style={styles.content}>
                 <Text style={styles.title}>
-                    Seja bem vindo!
+                    Segurança
                 </Text>
                 <Text style={styles.subtitle}>
-                    Preencha com seus dados {"\n"}ou faça o cadastro.
+                    Escolha uma senha forte{'\n'}para protejer sua conta.
                 </Text>
             </View>
             <View>
                 <SignInput
-                    name="user"
-                    placeholder="E-mail"
-                    onChangeText={(t: React.SetStateAction<string>)=>setEmailField(t)}
-                    value={emailField}            
+                    name="lock"
+                    placeholder="Digite sua senha"
+                    onChangeText={(t: React.SetStateAction<string>)=>setPasswordField(t)}
+                    password={true}
+                    value={passwordField}            
                 />
                 <SignInput
                     name="lock"
-                    placeholder="Senha"
+                    placeholder="Confirme sua senha"
                     onChangeText={(t: React.SetStateAction<string>)=>setPasswordField(t)}
                     password={true}
-                    value={passwordField}
+                    value={passwordField}    
                 />
                 <ButtonBasic
-                    title="Vamos começar?" 
+                    title="Continuar cadastro" 
                     activeOpacity={0.8}
-                    onPress={handleSignIn}
+                    onPress={handleSignUpPassword}
                 />    
                 <Text style={styles.splitText}>
                 - Ou -
                 </Text>
             </View>
             <SignMessageButton
-                title='Novo por aqui?'
-                action='Criar uma conta'
+                title='Ja possui conta?'
+                action='Faça seu login'
                 activeOpacity={0.9}
                 onPress={handleMessageButton}
             />

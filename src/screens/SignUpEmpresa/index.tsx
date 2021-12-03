@@ -8,15 +8,16 @@ import { ButtonBasic } from '../../components/ButtonBasic';
 import { SignInput } from '../../components/SignInput';
 
 
-export function SignIn() {
-    
+export function SignUpEmpresa() {
+
+    const[nameField, setNameField] = useState('');
     const[emailField, setEmailField] = useState('');
-    const[passwordField, setPasswordField] = useState('');
-    
+    const[phoneField, setPhoneField] = useState('');  
+
     const navigation = useNavigation();
 
-    function handleSignIn(){
-        navigation.navigate('Home');
+    function handleSignUp(){
+        navigation.navigate('SignUpPassword');
     }
     function handleMessageButton(){
         navigation.navigate('SignUp');
@@ -26,38 +27,46 @@ export function SignIn() {
         <View style={styles.container}>
             <View style={styles.content}>
                 <Text style={styles.title}>
-                    Seja bem vindo!
+                    Cadastre sua empresa
                 </Text>
                 <Text style={styles.subtitle}>
-                    Preencha com seus dados {"\n"}ou faça o cadastro.
+                    Preencha com seus dados.
                 </Text>
             </View>
             <View>
                 <SignInput
                     name="user"
-                    placeholder="E-mail"
-                    onChangeText={(t: React.SetStateAction<string>)=>setEmailField(t)}
-                    value={emailField}            
+                    placeholder="Nome"
+                    onChangeText={(t: React.SetStateAction<string>)=>setNameField(t)}
+
+                    value={nameField}            
                 />
                 <SignInput
-                    name="lock"
-                    placeholder="Senha"
-                    onChangeText={(t: React.SetStateAction<string>)=>setPasswordField(t)}
-                    password={true}
-                    value={passwordField}
+                    name="mail"
+                    placeholder="E-mail"
+                    onChangeText={(t: React.SetStateAction<string>)=>setEmailField(t)}
+                  
+                    value={emailField}
+                />
+                <SignInput
+                    name="phone"
+                    placeholder="Telefone"
+                    onChangeText={(t: React.SetStateAction<string>)=>setPhoneField(t)}
+                   
+                    value={phoneField}
                 />
                 <ButtonBasic
-                    title="Vamos começar?" 
+                    title="Continuar cadastro" 
                     activeOpacity={0.8}
-                    onPress={handleSignIn}
+                    onPress={handleSignUp}
                 />    
                 <Text style={styles.splitText}>
                 - Ou -
                 </Text>
             </View>
             <SignMessageButton
-                title='Novo por aqui?'
-                action='Criar uma conta'
+                title='Ja possui conta?'
+                action='Faça seu login'
                 activeOpacity={0.9}
                 onPress={handleMessageButton}
             />
