@@ -1,5 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
 //Importar Telas
 import { Home } from '../screens/Home';
@@ -10,6 +11,9 @@ import { SignUpPassword } from '../screens/SignUpPassword';
 import { SignUpUserType } from '../screens/SignUpUserType';
 import { SignUpInterest } from '../screens/SignUpInterest';
 import { SignUpEmpresa } from '../screens/SignUpEmpresa';
+import { Search } from '../screens/Search';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
 //Definir parametros para Telas
 export type RootStackParamList = {
@@ -21,52 +25,85 @@ export type RootStackParamList = {
     SignUpUserType: undefined;
     SignUpInterest: undefined;
     SignUpEmpresa: undefined;
+    Search: undefined;
   };
 
-const { Navigator , Screen } = createNativeStackNavigator<RootStackParamList>();
+type Props = BottomTabNavigationProp<RootStackParamList>;
+
+const Bottom = createBottomTabNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export function Tabs() {
+    return (
+
+            <Bottom.Navigator
+            screenOptions={{ 
+                headerShown: false,
+                tabBarShowLabel: false
+
+            }}
+            >
+                <Bottom.Screen 
+                name="SignIn" 
+                component={SignIn} 
+                />
+        
+                <Bottom.Screen  
+                name="Home" 
+                component={Preload} 
+                />
+
+            </Bottom.Navigator>
+     
+    );  
+}
 
 export function AuthRoutes() {
     return (
-        <Navigator
-            screenOptions={{ 
-                headerShown: false,
-                contentStyle: {
-                    backgroundColor: 'transparent'
-                }
-            }}
+        <Stack.Navigator
+        screenOptions={{ 
+            headerShown: false,
+            contentStyle: {
+            backgroundColor: 'transparent'
+            }
+        }}
         >
-            <Screen 
+            <Stack.Screen 
             name="Preload" 
             component={Preload} 
             />
-            <Screen 
+            <Stack.Screen 
             name="SignIn" 
             component={SignIn} 
             />
-            <Screen 
+            <Stack.Screen  
             name="SignUpInterest" 
             component={SignUpInterest} 
             />
-            <Screen 
+            <Stack.Screen  
             name="SignUpEmpresa" 
             component={SignUpEmpresa} 
             />
-            <Screen 
+            <Stack.Screen  
             name="SignUpUserType" 
             component={SignUpUserType} 
             />
-            <Screen 
+            <Stack.Screen  
             name="SignUp" 
             component={SignUp} 
             />
-            <Screen 
+            <Stack.Screen  
             name="SignUpPassword" 
             component={SignUpPassword} 
             />
-            <Screen 
+            <Stack.Screen  
+            name="Search" 
+            component={Search} 
+            />
+            <Stack.Screen  
             name="Home" 
             component={Home} 
             />
-        </Navigator>
+        </Stack.Navigator>
     );  
 }

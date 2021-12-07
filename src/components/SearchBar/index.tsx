@@ -25,8 +25,7 @@ export function SearchBar({ placeholder, onChangeText, password, ...rest}: Props
             style={styles.container}
             {...rest}
         >
-            <View style={styles.inputArea}>       
-                
+            <View style={styles.inputArea}>                
                 <TextInput 
                     style={styles.input}
                     placeholder={placeholder}
@@ -34,9 +33,11 @@ export function SearchBar({ placeholder, onChangeText, password, ...rest}: Props
                     secureTextEntry={password}
                 />
             </View>  
-            <RectButton>
-                <FontAwesome name="search" size={24} color="black" />
-            </RectButton>
+            <RectButton 
+                style={styles.search}
+            >
+                <FontAwesome name="search" size={24} color="white" />
+            </RectButton>    
         </View>
     );
 }

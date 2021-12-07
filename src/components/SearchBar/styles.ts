@@ -3,8 +3,10 @@ import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
         flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        paddingHorizontal: 30
     },
     inputArea: {
         backgroundColor: '#fff',
@@ -14,19 +16,36 @@ export const styles = StyleSheet.create({
         paddingLeft: 20,
         borderRadius: 12,
         alignItems: 'center',
-        marginBottom: 25,
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 6.27,
+        elevation: 10
     },
     input: {
         flex: 1,
         color: theme.colors.heading,
         fontSize: 16,
         fontFamily: theme.fonts.text400,
-        paddingLeft: 20
+        paddingLeft: 5,
+        marginTop: 2,
+    
     },
     search: {
         backgroundColor: theme.colors.primary,
+        height: 54,
+        paddingHorizontal: 18,
+        borderRadius: 12,
         justifyContent: 'center',
-        alignItems: 'center',
-        height: 56,
-    }
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 6.27,
+        elevation: 10
+    },
+
 })

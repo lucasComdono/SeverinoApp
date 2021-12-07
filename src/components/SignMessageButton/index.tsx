@@ -1,17 +1,16 @@
 import React from 'react';
-import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 import { styles } from './styles'
 
-type Props = RectButtonProps & {
+type Props = TouchableOpacityProps & {
     title: string;
     action: string;
 }
 
 export function SignMessageButton({ title, action, ...rest } : Props) {
     return(
-        <RectButton 
+        <TouchableOpacity
             style={styles.content}
             {...rest}
         >
@@ -21,7 +20,7 @@ export function SignMessageButton({ title, action, ...rest } : Props) {
             <Text style={styles.action}>
                 { action }
             </Text> 
-        </RectButton>
+        </TouchableOpacity>
         
     );
 }

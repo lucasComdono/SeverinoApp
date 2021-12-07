@@ -6,6 +6,7 @@ import { styles } from './styles';
 import { SignMessageButton } from '../../components/SignMessageButton';
 import { ButtonBasic } from '../../components/ButtonBasic';
 import { SignInput } from '../../components/SignInput';
+import { Topbar } from '../../components/Topbar';
 
 
 export function SignUpPassword() {
@@ -24,6 +25,9 @@ export function SignUpPassword() {
 
     return (
         <View style={styles.container}>
+            <View>
+                <Topbar/>
+            </View>
             <View style={styles.content}>
                 <Text style={styles.title}>
                     Segurança

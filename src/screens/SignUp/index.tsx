@@ -3,28 +3,47 @@ import { useNavigation } from '@react-navigation/core';
 import { View, Text } from 'react-native';
 import { styles } from './styles';
 
+import firebase from '../../config/firebaseConfig';
+
 import { SignMessageButton } from '../../components/SignMessageButton';
 import { ButtonBasic } from '../../components/ButtonBasic';
 import { SignInput } from '../../components/SignInput';
+import { Topbar } from '../../components/Topbar';
 
 
 export function SignUp() {
 
-    const[nameField, setNameField] = useState('');
-    const[emailField, setEmailField] = useState('');
-    const[phoneField, setPhoneField] = useState('');  
+    const[name, setName] = useState('');
+    const[email, setEmail] = useState('');
+    const[password, setPassword] = useState('');
+    const[errorRegister, setErrorRegister] = useState<boolean>();
+
+    const register  = ()=>{
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            let user = userCredential.user;
+            console.log(user)
+            // ...
+        })
+        .catch((error) => {
+
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            // ..
+        });
+    }
 
     const navigation = useNavigation();
-
     function handleSignUp(){
-        navigation.navigate('SignUpPassword');
+        navigation.navigate('SignUpUserType');
     }
     function handleMessageButton(){
-        navigation.navigate('SignUp');
+        navigation.navigate('SignIn');
     }
 
     return (
         <View style={styles.container}>
+            <Topbar/>
             <View style={styles.content}>
                 <Text style={styles.title}>
                     Crie sua conta
@@ -37,29 +56,45 @@ export function SignUp() {
                 <SignInput
                     name="user"
                     placeholder="Nome"
-                    onChangeText={(t: React.SetStateAction<string>)=>setNameField(t)}
+                    onChangeText={(t: React.SetStateAction<string>)=>setName(t)}
 
-                    value={nameField}            
+                    value={name}            
                 />
                 <SignInput
                     name="mail"
                     placeholder="E-mail"
-                    onChangeText={(t: React.SetStateAction<string>)=>setEmailField(t)}
+                    onChangeText={(t: React.SetStateAction<string>)=>setEmail(t)}
                   
-                    value={emailField}
+                    value={email}
                 />
                 <SignInput
-                    name="phone"
-                    placeholder="Telefone"
-                    onChangeText={(t: React.SetStateAction<string>)=>setPhoneField(t)}
-                   
-                    value={phoneField}
+                    name="lock"
+                    placeholder="Senha"
+                    onChangeText={(t: React.SetStateAction<string>)=>setPassword(t)}
+                    password={true}
+                    value={password}
                 />
-                <ButtonBasic
+                {errorRegister === true ? 
+                    <Text style={styles.alert}>Email ou senhas inválidos</Text> 
+                    :
+                    <View/>
+                }
+                {email === "" || password ==="" ?
+                    <ButtonBasic
                     title="Continuar cadastro" 
                     activeOpacity={0.8}
                     onPress={handleSignUp}
-                />    
+                    enabled={true}
+                    />   
+                    :
+                    <ButtonBasic
+                    title="Continuar cadastro" 
+                    activeOpacity={0.8}
+                    onPress={handleSignUp}
+                    enabled={true}
+                    />                       
+                }
+
                 <Text style={styles.splitText}>
                 - Ou -
                 </Text>
@@ -67,7 +102,7 @@ export function SignUp() {
             <SignMessageButton
                 title='Ja possui conta?'
                 action='Faça seu login'
-                activeOpacity={0.9}
+                activeOpacity={0.5}
                 onPress={handleMessageButton}
             />
         </View>

@@ -14,8 +14,9 @@ export const styles = StyleSheet.create({
     title: {
         color: theme.colors.heading,
         fontSize: 30,
-        marginTop: '12%',
+        paddingTop: '10%',
         fontFamily: theme.fonts.title600,
+        lineHeight: 30
     },
     subtitle: {
         color: theme.colors.highlight,

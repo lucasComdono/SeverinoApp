@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { styles } from './styles';
 
 import { UserTypeButton } from '../../components/UserTypeButton';
+import { Topbar } from '../../components/Topbar';
 
 
 export function SignUpUserType() {
@@ -20,6 +21,7 @@ export function SignUpUserType() {
 
     return (
         <View style={styles.container}>
+            <Topbar/>
             <View style={styles.content}>
                 <Text style={styles.title}>
                     Escolha seu tipo de conta

@@ -6,6 +6,7 @@ import { styles } from './styles';
 import { SignMessageButton } from '../../components/SignMessageButton';
 import { ButtonBasic } from '../../components/ButtonBasic';
 import { SignInput } from '../../components/SignInput';
+import { Topbar } from '../../components/Topbar';
 
 
 export function SignUpEmpresa() {
@@ -20,14 +21,15 @@ export function SignUpEmpresa() {
         navigation.navigate('SignUpPassword');
     }
     function handleMessageButton(){
-        navigation.navigate('SignUp');
+        navigation.navigate('Preload');
     }
 
     return (
         <View style={styles.container}>
+            <Topbar/>
             <View style={styles.content}>
                 <Text style={styles.title}>
-                    Cadastre sua empresa
+                    Cadastre seu Negócio
                 </Text>
                 <Text style={styles.subtitle}>
                     Preencha com seus dados.
@@ -35,22 +37,22 @@ export function SignUpEmpresa() {
             </View>
             <View>
                 <SignInput
-                    name="user"
-                    placeholder="Nome"
+                    name="briefcase"
+                    placeholder="Nome do negócio"
                     onChangeText={(t: React.SetStateAction<string>)=>setNameField(t)}
 
                     value={nameField}            
                 />
                 <SignInput
                     name="mail"
-                    placeholder="E-mail"
+                    placeholder="E-mail profissional"
                     onChangeText={(t: React.SetStateAction<string>)=>setEmailField(t)}
                   
                     value={emailField}
                 />
                 <SignInput
                     name="phone"
-                    placeholder="Telefone"
+                    placeholder="Telefone profissional"
                     onChangeText={(t: React.SetStateAction<string>)=>setPhoneField(t)}
                    
                     value={phoneField}
@@ -60,16 +62,7 @@ export function SignUpEmpresa() {
                     activeOpacity={0.8}
                     onPress={handleSignUp}
                 />    
-                <Text style={styles.splitText}>
-                - Ou -
-                </Text>
             </View>
-            <SignMessageButton
-                title='Ja possui conta?'
-                action='Faça seu login'
-                activeOpacity={0.9}
-                onPress={handleMessageButton}
-            />
         </View>
     );
 

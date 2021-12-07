@@ -3,6 +3,8 @@ import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { Routes } from './src/routes';
 
+import { AuthContext } from './src/hooks/auth';
+
 //Fontes
 import {  Poppins_700Bold,
   Poppins_600SemiBold,
@@ -25,8 +27,11 @@ export default function App() {
   }
 
   return (
-    <>   
+    <>  
+
       <Routes />
+
+
     </>
   );
 }

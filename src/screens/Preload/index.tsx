@@ -12,7 +12,7 @@ export function Preload(){
     const navigation = useNavigation();
     
     function handlePreload(){
-        navigation.navigate('SignUpUserType');
+        navigation.navigate('SignIn');
     }
 
     return (

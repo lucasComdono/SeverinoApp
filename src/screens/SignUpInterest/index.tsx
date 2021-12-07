@@ -7,6 +7,7 @@ import { Category } from '../../components/Category';
 
 import { ButtonBasic } from '../../components/ButtonBasic';
 import { CategorySelect } from '../../components/CategorySelect';
+import { Topbar } from '../../components/Topbar';
 
 type Props = {
     categorySelected: string;
@@ -29,7 +30,9 @@ export function SignUpInterest({categorySelected}: Props) {
     }
 
     return (< >
+
                 <View style={styles.container}>
+                    <Topbar/>
                     <View style={styles.content}>
                         <Text style={styles.title}>
                             Seus interesses
@@ -42,7 +45,6 @@ export function SignUpInterest({categorySelected}: Props) {
                 </View>
                 <View>
                     <FlatList 
-                
                         style={styles.flatList}
                         data={interests}
                         keyExtractor={item => item.id}
@@ -52,11 +54,8 @@ export function SignUpInterest({categorySelected}: Props) {
                         renderItem={(({item}) => (
                             <Category
                                 data={item}
-                            
-
                             />   
                         ))}
-                        
                     />                    
                 </View>
 
